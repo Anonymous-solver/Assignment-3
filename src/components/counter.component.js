@@ -1,25 +1,29 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  render() {
-    return (
-      <>
-        <button onClick={() => this.props.handleIncrement(this.props.value)}>Increment</button>
+	render() {
+		const { value, count, handleIncrement, handleDecrement, handleRemove } =
+			this.props;
+		return (
+			<>
+				<button onClick={() => handleIncrement(value)}>
+					Increment
+				</button>
 
-        <span style = {{margin: "5px"}}>{this.props.count}</span>
-        <button
-          disabled={this.props.count === 0}
-          onClick={() => this.props.handleDecrement(this.props.value)}
-        >
-          Decrement
-        </button>
+				<span style={{ margin: "5px" }}>{count}</span>
+				<button
+					disabled={count === 0}
+					onClick={() => handleDecrement(value)}
+				>
+					Decrement
+				</button>
 
-        <span style = {{margin: "10px"}}><button onClick={() => this.props.handleRemove(this.props.value)}>
-          Remove
-        </button></span>
-      </>
-    );
-  }
+				<span style={{ margin: "10px" }}>
+					<button onClick={() => handleRemove(value)}>Remove</button>
+				</span>
+			</>
+		);
+	}
 }
 
 export default Counter;
